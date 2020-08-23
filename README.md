@@ -64,10 +64,6 @@ Explanation
 
 Since the city B is under lockdown, he cannot go to city B. Hence the output is -1
 
- 
-
-codevita zone 1 2020 questions
-
 SOLUTION OF TRAVEL COST
  
 
