@@ -1,71 +1,89 @@
-# hackerRankps
+#problem statement & solution
 #the given problem statement is :
 ---------------------------------------------------------------------------------
-Task
-Given an integer,n , perform the following conditional actions:
+Suresh wants to travel from city A to city B. But due to coronavirus pandemic, almost all the cities have levied entry tax into the cities so that the number of people entering the city can be limited. Suresh can skip at the most m cities at a time. Suresh has to declare his itinerary at the time of leaving city A. Thus he will have to pay upfront for entire itinerary and also has to pay a fee to get the slips issued. Upon payment he will be given the slips for intermediate cities where he has to show the slips to pass through, en route to his destination.
 
-If n  is odd, print Weird
-If n  is even and in the inclusive range of 2  to 5, print Not Weird
-If n is even and in the inclusive range of 6 to 20, print Weird
-If n is even and greater than 20, print Not Weird
-Input Format
+Some cities have enforced lockdown, that means those cities have blocked the entry into the cities and you will have to skip the cities in any case, such cities are represented by -1. This information is known to Suresh upfront.
 
-A single line containing a positive integer,n .
+Help Suresh find the minimum amount to be paid to reach from City A to City B  
 
 Constraints
-1<=n<=100
+No of cities <=10^5
 
-Output Format
+Input
+First line contains an integer N, denoting the number of cities
 
-Print Weird if the number is weird. Otherwise, print Not Weird.
+Second line contains N space separated integers, where first integer denotes the cost of issuing itinerary slips and next (N-1) integers denote the entry fee of all cities. The last integer is always the destination city. If city is under lock down then its entry fee will be -1.
 
-Sample Input 0
+Third line contains an integer, M which represents number of cities he can skip from a present city during his travel
+
+Output
+Single integer which represents the minimum cost Suresh has to pay to travel from city A to B, but if city B is not reachable then print -1
+
+Time Limit
+1
+
+Examples
+Example 1
+
+Input
+
+5
+
+1 6 -1 5 7
+
+1
+
+Output
+
+19
+
+ 
+
+Explanation
+
+Since he could skip only 1 city between the cities. He will have to pay 1+6+5+7, where 1 is the fees paid to issue slips and [6,5,7] are the fees paid for the entry to the respective cities. So the total amount he has to pay while leaving A is 19.
+
+ 
+
+Example 2
+
+Input
+
+4
+
+3 4 1 -1
 
 3
-Sample Output 0
 
-Weird
-Explanation 0
-n = 3
+Output
 
-n is odd and odd numbers are weird, so print Weird.
+-1
 
-Sample Input 1
+Explanation
 
-24
-Sample Output 1
+Since the city B is under lockdown, he cannot go to city B. Hence the output is -1
 
-Not Weird
-Explanation 1
+ 
 
-n = 24
-n>20 and n is even, so it is not weird.
+codevita zone 1 2020 questions
 
-=================================================================================================================================
-prefered solution is : 
+SOLUTION OF TRAVEL COST
+ 
 
-Python 2
---------
-
-n = int(raw_input())
-if n % 2 == 1:
-    print "Weird"
-elif n % 2 == 0 and 2 <= n <= 5:
-    print "Not Weird"
-elif n % 2 == 0 and 6 <= n <= 20:
-    print "Weird"
+A=int(input())
+c=list(map(int,input().split()))
+B=int(input())
+co=skips=0
+if(c[-1]<0):
+    co=-1
 else:
-    print "Not Weird"
-    
-Python 3
----------
-
-n = int(input())
-if n % 2:
-    print("Weird")
-elif 2 <= n <= 5:
-    print("Not Weird")
-elif 6 <= n <= 20:
-    print("Weird")
-else:
-    print("Not Weird")
+    for i in c:
+        if(skips>B):
+            break
+        else:
+            if(i<0):
+                skips+=i
+                continue
+                co+=i
+                print(co,end='')
